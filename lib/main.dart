@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/homepage.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -11,13 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Material(
-          child: Center(
-              child: Container(
-                  child: Text(
-        "Welcome to 30 Days of Flutter",
-        style: TextStyle(color: Colors.black, fontSize: 15),
-      )))),
+      title: 'Flutter Tutorial',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
+      home: Homepage(),
     );
   }
 }
