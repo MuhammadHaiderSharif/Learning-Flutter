@@ -6,7 +6,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF222222),
       appBar: AppBar(
         title: Text(
           "G-Electrode",
@@ -17,7 +17,10 @@ class Homepage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child: Text("Welcome to 30 Days of Flutter by G-Electrode."),
+          child: Text("Welcome to 30 Days of Flutter by G-Electrode.",
+              style: TextStyle(
+                color: Colors.white,
+              )),
         ),
       ),
       drawer: Drawer(),
