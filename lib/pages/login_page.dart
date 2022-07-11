@@ -8,50 +8,53 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.white,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.asset(
-                "assets/images/login_image.png",
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Text(
-                "Welcome",
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 36.0, horizontal: 22.0),
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                          hintText: "Enter your username",
-                          labelText: "Username"),
-                    ),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: "Enter your password",
-                          labelText: "Password"),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, MyRoutes.homeRoute);
-                      },
-                      child: Text("Login"),
-                      style: TextButton.styleFrom(minimumSize: Size(115, 38)),
-                    )
-                  ],
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Image.asset(
+                  "assets/images/login_image.jpg",
+                  fit: BoxFit.cover,
+                  height: 250,
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 16.0,
+                ),
+                Text(
+                  "Welcome",
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 36.0, horizontal: 22.0),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: InputDecoration(
+                            hintText: "Enter your username",
+                            labelText: "Username"),
+                      ),
+                      TextFormField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            hintText: "Enter your password",
+                            labelText: "Password"),
+                      ),
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, MyRoutes.homeRoute);
+                        },
+                        child: Text("Login"),
+                        style: TextButton.styleFrom(minimumSize: Size(115, 38)),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ));
   }
