@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
+  bool changeButton = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.white,
-        child: SafeArea(
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Image.asset(
                   "assets/images/login_image.jpg",
                   fit: BoxFit.cover,
-                  height: 250,
                 ),
                 SizedBox(
                   height: 16.0,
                 ),
                 Text(
-                  "Welcome",
+                  "Welcome $name",
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
                 Padding(
@@ -33,6 +40,10 @@ class LoginPage extends StatelessWidget {
                         decoration: InputDecoration(
                             hintText: "Enter your username",
                             labelText: "Username"),
+                        onChanged: (value) {
+                          name = value;
+                          setState(() {});
+                        },
                       ),
                       TextFormField(
                         obscureText: true,
@@ -43,13 +54,44 @@ class LoginPage extends StatelessWidget {
                       SizedBox(
                         height: 30.0,
                       ),
-                      ElevatedButton(
-                        onPressed: () {
+                      InkWell(
+                        onTap: (() async {
+                          setState(() {
+                            changeButton = true;
+                          });
+                          await Future.delayed(Duration(milliseconds: 1));
                           Navigator.pushNamed(context, MyRoutes.homeRoute);
-                        },
-                        child: Text("Login"),
-                        style: TextButton.styleFrom(minimumSize: Size(115, 38)),
-                      )
+                        }),
+                        splashColor: Colors.black,
+                        child: AnimatedContainer(
+                          duration: Duration(seconds: 1),
+                          width: changeButton ? 50 : 115,
+                          height: 50,
+                          child: Center(
+                              child: changeButton
+                                  ? Icon(Icons.done)
+                                  : Text(
+                                      "Login",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18),
+                                    )),
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            // shape: changeButton? BoxShape.circle: BoxShape.rectangle,
+                            borderRadius:
+                                BorderRadius.circular(changeButton ? 50 : 8),
+                          ),
+                        ),
+                      ),
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     Navigator.pushNamed(context, MyRoutes.homeRoute);
+                      //   },
+                      //   child: Text("Login"),
+                      //   style: TextButton.styleFrom(minimumSize: Size(115, 38)),
+                      // )
                     ],
                   ),
                 ),
