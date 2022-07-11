@@ -6,16 +6,16 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.white,
-        child: SafeArea(
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Image.asset(
                   "assets/images/login_image.jpg",
-                  fit: BoxFit.cover,
-                  height: 250,
+                  fit: BoxFit.cover
+                  ,
                 ),
                 SizedBox(
                   height: 16.0,
